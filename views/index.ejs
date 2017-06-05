@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contacts</title>
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <script type="text/javascript" src="/script.js"></script>
+</head>
+<body>
+
+  <h1>Contacts</h1>
+
+  <div class="contact-list">
+    <% contacts.forEach(function(contact){ %>
+      <div>
+        <%= contact.name %>
+      </div>
+    <% }) %>
+  </div>
+
+</body>
+</html>
