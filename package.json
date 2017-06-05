@@ -7,7 +7,7 @@
     "start:dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "db:build": "npm run db:create && npm run db:setup && npm run db:seed",
-    "db:reset": "npm run db:drop && db:create",
+    "db:reset": "npm run db:drop && npm run db:create",
       "db:create": "createdb contacts",
       "db:setup": "psql contacts< ./schema.sql",
       "db:seed": "psql contacts< ./contacts.sql",
