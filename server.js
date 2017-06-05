@@ -2,11 +2,13 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const database = require('./database')
 const app = express()
+var logger = require('morgan')
 
 require('ejs')
 app.set('view engine', 'ejs');
 
 app.use(express.static('public'))
+app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get('/', (request, response) => {
@@ -23,6 +25,10 @@ app.get('/', (request, response) => {
   })
 })
 
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(err.status || 500).send("Something went wrong");
+})
 app.use((request, response) => {
   response.status(404).render('not_found')
 })
