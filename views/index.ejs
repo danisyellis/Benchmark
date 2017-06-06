@@ -2,20 +2,26 @@
 <html>
 <head>
   <title>Contacts</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
   <link rel="stylesheet" type="text/css" href="/style.css">
   <script type="text/javascript" src="/script.js"></script>
 </head>
-<body>
+<body class="fullHeight">
+  <div class="row fullHeight">
+    <div class="col s3 teal-background fullHeight"></div>
+    <main class="col s6 no-padding fullHeight">
+      <div><% include ./header %></div>
+      <h1><a href="/">Contacts</a></h1>
 
-  <h1>Contacts</h1>
-
-  <div class="contact-list">
-    <% contacts.forEach(function(contact){ %>
-      <div>
-        <%= contact.name %>
+      <div class="contact-list">
+        <% contacts.forEach(function(contact){ %>
+          <div class="link-text">
+            <%= contact.name %>
+          </div>
+        <% }) %>
       </div>
-    <% }) %>
+    </main>
+    <div class= "col s3 teal-background fullHeight"></div>
   </div>
-
 </body>
 </html>

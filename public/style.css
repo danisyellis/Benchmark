@@ -2,4 +2,58 @@ html, body{
   margin: 0;
   padding: 0;
   width: 100vw;
+  font-family: monospace;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: #002653;
+}
+
+no-padding {
+  padding: 0;
+}
+.fullHeight {
+  height: 100vh;
+}
+
+/*colors*/
+.teal-background {
+  background-color: #50E3C2;
+}
+.blue-background {
+   background-color: #4990E2;
+}
+.default-text {
+  color: #4A4A4A;
+}
+.secondary-text {
+  color: #9B9B9B;
+}
+.link-text {
+  color: #002653;
+}
+.delete-links {
+  color: #D0011B;
+}
+.white-text {
+  color: white;
+}
+
+.header-elements {
+  display: inline-block;
+  max-width: 200px;
+  padding: 2px;
+  /*font-size: 10px;*/
+}
+
+.input {
+}
+input[type=text] {
+  background-color: white;
+  height: auto;
+  margin: 0;
+  border-radius: 5px;
+  width: 150px;
 }
