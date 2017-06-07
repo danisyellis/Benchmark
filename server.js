@@ -40,6 +40,10 @@ app.get('/', function(req, res) {
   })
 })
 
+app.get('/contacts/new', function(req, res) {
+  res.render('newContact.ejs');
+})
+
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(err.status || 500).send("Something went wrong");

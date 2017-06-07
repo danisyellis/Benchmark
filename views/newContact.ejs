@@ -4,15 +4,38 @@
     <div class="col s3 teal-background fullHeight"></div>
     <main class="col s6 no-padding fullHeight">
       <div><% include ./partials/header %></div>
-      <!-- <h1><a href="/">Contacts</a></h1>
-
-      <div class="contact-list">
-        <% contacts.forEach(function(contact){ %>
-          <div class="link-text">
-            <%= contact.name %>
-          </div>
-        <% }) %>
-      </div> -->
+      <h5> New Contact </h5>
+      <form>
+        <p>
+          <label for="name">name</label>
+          <input type="text" id="name" autofocus="true">
+        </p>
+        <p>
+          <label for="email">email</label>
+          <input type="email" id="email">
+          <!-- has special validation -->
+        </p>
+        <p>
+          <label for="phone">phone</label>
+          <input type="tel" id="phone">
+        </p>
+        <p>
+          <label for="address">address</label>
+          <textarea rows="6" id="address"></textarea>
+        </p>
+        <p>
+          <label for="birthday">birthday</label>
+          <input type="date" id= "birthday">
+        </p>
+        <p>
+          <label for="website">website</label>
+          <input type="url" id="website">
+          <!-- has special validation -->
+        </p>
+        <p>
+          <button type="submit" class="blue-background white-text">Create Contact</button>
+        </p>
+      </form>
     </main>
     <div class= "col s3 teal-background fullHeight"></div>
   </div>
