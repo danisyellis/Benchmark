@@ -11,34 +11,19 @@ app.use(express.static('public'))
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }))
 
-//commenting out the arrow functions cause they're harder to read
-// app.get('/', (request, response) => {
-//   database.getContacts((error, contacts) => {
-//     if (error) {
-//       response.status(500).render('error.ejs', {
-//         error: error,
-//       })
-//     } else {
-//       response.render('index.ejs', {
-//         contacts: contacts,
-//       })
-//     }
-//   })
-// })
-
 app.get('/', function(req, res) {
-  database.getContacts(function(error, contacts) {
-    if (error) {
-      res.status(500).render('error.ejs', {
-        error: error
-      })
-    } else {
-      res.render('index.ejs', {
-        contacts:contacts
-      })
-    }
+  database.getContacts().then(function(contacts) {
+    //alphabetize the contacts
+    console.log(contacts);
+    res.render('index.ejs', {
+      contacts:contacts
+    })
+  }).catch(function(err) {
+    res.status(500).render('error.ejs', {
+      error: err
+    })
   })
-})
+});
 
 app.get('/contacts/new', function(req, res) {
   res.render('newContact.ejs');

@@ -3,28 +3,21 @@ const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/
 const client = new pg.Client(connectionString)
 client.connect()
 
-const query = function(sql, variables, callback){
-  console.log('QUERY ->', sql.replace(/[\n\s]+/g, ' '), variables)
-
-  client.query(sql, variables, function(error, result){
-    if (error){
-      console.log('QUERY <- !!ERROR!!')
-      console.error(error)
-      callback(error)
-    }else{
-      console.log('QUERY <-', JSON.stringify(result.rows))
-      callback(error, result.rows)
-    }
+const getContacts = function(){
+  return new Promise(function(resolve, reject) {
+    client.query(`
+      SELECT
+        *
+      FROM
+        contacts
+    `).then(res => {
+      console.log('result of query: ' + res.rows[0].name);
+      resolve(res.rows);
+    })
+    .catch(err => {
+      reject(err)
+    })
   })
-}
-
-const getContacts = function(callback){
-  query(`
-    SELECT
-      *
-    FROM
-      contacts
-  `, [], callback)
 }
 
 module.exports = {
