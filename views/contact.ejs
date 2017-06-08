@@ -4,7 +4,27 @@
     <div class="col s3 teal-background fullHeight"></div>
     <main class="col s6 no-padding fullHeight">
       <div><% include ./partials/header %></div>
+        <a href="/"><p class ="delete-links"> Delete </p></a>
         <h5> <%= contact.name %> </h5>
+        <p><div class="contactLabel secondary-text">name</div> <%= contact.name %> </p>
+        <p><div class="contactLabel secondary-text">email</div> <%=contact.email %></p>
+        <p><div class="contactLabel secondary-text">phone</div> <%=contact.phone %></p>
+        <p>
+          <div class="address"> <div class="contactLabel secondary-text">address</div> <%=contact.street %> <br>
+            <%=contact.city %>,
+            <%=contact.state %>
+            <%=contact.zip %> <br>
+            <%=contact.country %>
+          </div>
+          <div class="address">
+            <iframe src="//www.google.com/maps/embed/v1/place?q=<%=addressForGoogle%>
+              &zoom=14
+              &key=AIzaSyCzS5XI5e-wHIr7eywRGoAU6KM8iwa_qkM" width="140">
+            </iframe>
+          </div>
+        </p>
+        <p><div class="contactLabel secondary-text">birthday</div> <%=contact.birthday %></p>
+        <p><div class="contactLabel secondary-text">website</div> <%=contact.website %></p>
 
 
     </main>

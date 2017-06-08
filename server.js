@@ -19,6 +19,12 @@ var alphabetizeContacts = function(contacts) {
   });
 }
 
+var makeGoogleAddress = function(contact) {
+  var fullAddress = contact.street + ", " +contact.city + ", " + contact.state + " " + contact.zip;
+  googleAddress = fullAddress.replace(/\s/g, '+');
+  return googleAddress;
+}
+
 require('ejs')
 app.set('view engine', 'ejs');
 
@@ -45,9 +51,10 @@ app.get('/contacts/new', function(req, res) {
 
 app.get('/contacts/:id', function(req, res) {
   database.getContactById(req.params.id).then(function(contact) {
-    console.log('contact name: '+ contact.name)
+    var addressForGoogle = makeGoogleAddress(contact);
     res.render('contact.ejs', {
-      contact:contact
+      contact:contact,
+      addressForGoogle: addressForGoogle
     })
   }).catch(function(err) {
     res.status(500).render('error.ejs', {
