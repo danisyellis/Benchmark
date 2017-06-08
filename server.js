@@ -4,6 +4,21 @@ const database = require('./database')
 const app = express()
 var logger = require('morgan')
 
+//helper functions
+var alphabetizeContacts = function(contacts) {
+  contacts.sort(function(a,b) {
+    var nameA = a.name.toUpperCase();
+    var nameB = b.name.toUpperCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameB < nameA) {
+      return 1;
+    }
+    return 0;
+  });
+}
+
 require('ejs')
 app.set('view engine', 'ejs');
 
@@ -14,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.get('/', function(req, res) {
   database.getContacts().then(function(contacts) {
     //alphabetize the contacts
-    console.log(contacts);
+    alphabetizeContacts(contacts);
     res.render('index.ejs', {
       contacts:contacts
     })

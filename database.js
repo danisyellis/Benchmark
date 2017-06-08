@@ -11,7 +11,6 @@ const getContacts = function(){
       FROM
         contacts
     `).then(res => {
-      console.log('result of query: ' + res.rows[0].name);
       resolve(res.rows);
     })
     .catch(err => {
