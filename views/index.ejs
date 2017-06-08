@@ -9,7 +9,7 @@
       <div class="contact-list">
         <% contacts.forEach(function(contact){ %>
           <div class="link-text">
-            <%= contact.name %>
+            <a href="/contacts/<%=contact.id%>"><%= contact.name %></a>
           </div>
         <% }) %>
       </div>

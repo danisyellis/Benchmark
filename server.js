@@ -28,7 +28,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get('/', function(req, res) {
   database.getContacts().then(function(contacts) {
-    //alphabetize the contacts
     alphabetizeContacts(contacts);
     res.render('index.ejs', {
       contacts:contacts
@@ -43,6 +42,19 @@ app.get('/', function(req, res) {
 app.get('/contacts/new', function(req, res) {
   res.render('newContact.ejs');
 })
+
+app.get('/contacts/:id', function(req, res) {
+  database.getContactById(req.params.id).then(function(contact) {
+    console.log('contact name: '+ contact.name)
+    res.render('contact.ejs', {
+      contact:contact
+    })
+  }).catch(function(err) {
+    res.status(500).render('error.ejs', {
+      error: err
+    })
+  })
+});
 
 app.use(function(err, req, res, next) {
   console.error(err.stack);

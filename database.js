@@ -10,15 +10,32 @@ const getContacts = function(){
         *
       FROM
         contacts
-    `).then(res => {
-      resolve(res.rows);
+    `).then(data => {
+      resolve(data.rows);
+    }).catch(err => {
+      reject(err);
     })
-    .catch(err => {
-      reject(err)
+  })
+}
+
+var getContactById = function(id) {
+  return new Promise(function(resolve, reject) {
+    client.query(`
+      SELECT
+        *
+      FROM
+        contacts
+      WHERE
+        id = $1::int
+    `, [id]).then(data => {
+      resolve(data.rows[0]);
+    }).catch(err => {
+      reject(err);
     })
   })
 }
 
 module.exports = {
   getContacts,
+  getContactById
 }
