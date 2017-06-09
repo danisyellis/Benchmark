@@ -5,32 +5,44 @@
     <main class="col s6 no-padding fullHeight">
       <div><% include ./partials/header %></div>
       <h5> New Contact </h5>
-      <form>
+      <form method="post">
         <p>
           <label for="name">name</label>
-          <input type="text" id="name" autofocus="true">
+          <input type="text" id="name" name="name" autofocus="true" required>
         </p>
         <p>
           <label for="email">email</label>
-          <input type="email" id="email">
-          <!-- has special validation -->
+          <input type="email" id="email" name="email">
+          <!-- type has special validation -->
         </p>
         <p>
           <label for="phone">phone</label>
-          <input type="tel" id="phone">
+          <input type="tel" id="phone" name="phone">
         </p>
         <p>
-          <label for="address">address</label>
-          <textarea rows="6" id="address"></textarea>
+          <label for="street">street</label>
+          <textarea rows="6" id="street" name="street"></textarea>
+        </p>
+        <p>
+          <label for="city">city</label>
+          <textarea rows="6" id="city" name="city"></textarea>
+        </p>
+        <p>
+          <label for="country">country</label>
+          <textarea rows="6" id="country" name="country"></textarea>
+        </p>
+        <p>
+          <label for="zip">zip</label>
+          <textarea rows="6" id="zip" name="zip"></textarea>
         </p>
         <p>
           <label for="birthday">birthday</label>
-          <input type="date" id= "birthday">
+          <input type="date" id= "birthday" name="birthday">
         </p>
         <p>
           <label for="website">website</label>
-          <input type="url" id="website">
-          <!-- has special validation -->
+          <input type="url" id="website" name="website" value="http://">
+          <!-- type has special validation -->
         </p>
         <p>
           <button type="submit" class="blue-background white-text">Create Contact</button>

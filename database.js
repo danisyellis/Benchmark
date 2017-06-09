@@ -35,7 +35,23 @@ var getContactById = function(id) {
   })
 }
 
+var addContact = function(params) {
+  console.log(params.name)
+  return new Promise(function(resolve, reject) {
+    client.query('INSERT INTO contacts (name, email, phone, street, city, state, country, zip, birthday, website) VALUES ($1::text,$2::text,$3::text,$4::text,$5::text,$6::text,$7::text,$8::text,$9::text,$10::text)', [params.name, params.email, params.phone, params.street, params.city, params.state, params.country, params.zip, params.birthday, params.website]).then(res => {
+      client.query('SELECT * FROM contacts ORDER BY id DESC LIMIT 1').then(data => {
+        resolve(data.rows[0])
+      }).catch(err => {
+        reject(err);
+      })
+  })
+})
+}
+
+
+
 module.exports = {
   getContacts,
-  getContactById
+  getContactById,
+  addContact
 }

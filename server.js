@@ -49,6 +49,22 @@ app.get('/contacts/new', function(req, res) {
   res.render('newContact.ejs');
 })
 
+app.post('/contacts/new', function(req, res) {
+  //call a function that adds this person to the db
+  //grab the id
+  //render contacts/ that id
+  database.addContact(req.body).then(function(contact) {
+    console.log(contact)
+    var addressForGoogle = makeGoogleAddress(contact);
+    res.render('contact.ejs', {
+      contact: contact,
+      addressForGoogle: addressForGoogle
+    });
+
+  })
+})
+
+
 app.get('/contacts/:id', function(req, res) {
   database.getContactById(req.params.id).then(function(contact) {
     var addressForGoogle = makeGoogleAddress(contact);
