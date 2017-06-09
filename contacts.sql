@@ -3,5 +3,6 @@ INSERT INTO
 VALUES
   ('Captain Picard'),
   ('Jadzia Dax'),
-  ('NeEddra James')
+  ('NeEddra James'),
+  ('Dani Gellis')
 ;
